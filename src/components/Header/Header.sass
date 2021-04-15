@@ -1,0 +1,53 @@
+
+
+.header-row 
+    display: flex 
+    flex-wrap: wrap 
+    padding: 37px 0 24px 
+    border-bottom: 1px solid #000
+    
+
+.header-item 
+    width: 50%
+
+.logo 
+    margin-bottom: 5px
+    font-weight: 400
+    font-size: 36px
+    line-height: 48px
+
+.logo-text 
+    max-width: 400px
+
+.links 
+    display: flex 
+    flex-wrap: wrap 
+    justify-content: flex-end
+    margin-top: 16px
+    &__item 
+        margin-right: 24px
+        color: #000 
+        &:last-child 
+            margin-right: 0
+        &:hover
+            text-decoration: none
+        &.active 
+            text-decoration: none
+            font-weight: 700
+
+@media (max-width: 768px)
+    .header-row
+        padding: 8px 0 18px
+
+    .header-item
+        width: 100%
+    
+    .logo 
+        font-size: 24px 
+        line-height: 48px
+
+    .logo-text 
+        font-size: 16px
+
+    .links 
+        justify-content: flex-start

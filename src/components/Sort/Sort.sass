@@ -1,0 +1,56 @@
+.sort 
+    display: flex 
+    justify-content: space-between
+    padding: 25px 0
+
+.check
+    position: relative
+    &__input 
+        display: none
+        &:checked + .check__label 
+            display: block
+    &__label 
+        display: block 
+        padding-left: 30px
+        position: relative
+        &::before
+            content: ''
+            width: 18px
+            height: 18px
+            border-radius: 2px
+            border: 2px solid #000
+            position: absolute
+            top: 3px
+            left: 0
+        &::after 
+            content: ''
+            display: none
+            width: 12px
+            height: 6px
+            border-bottom: 2px solid #000
+            border-left: 2px solid #000
+            transform: rotate(-45deg)
+            position: absolute
+            top: 8px
+            left: 3px
+
+
+.switch-d 
+    &__link 
+        text-decoration: underline 
+        cursor: pointer
+        // white-space: nowrap
+        &.active 
+            font-weight: 700
+            text-decoration: none
+        &:hover 
+            text-decoration: uderline
+
+@media (max-width: 768px)
+    .sort 
+        padding: 8px 0 16px
+        flex-direction: column
+
+    .switch-d 
+        margin-top: 14px
+    
