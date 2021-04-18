@@ -7,12 +7,13 @@
     position: relative
     &__input 
         display: none
-        &:checked + .check__label 
+        &:checked + .check__label::after
             display: block
     &__label 
         display: block 
         padding-left: 30px
         position: relative
+        cursor: pointer
         &::before
             content: ''
             width: 18px
@@ -20,7 +21,7 @@
             border-radius: 2px
             border: 2px solid #000
             position: absolute
-            top: 3px
+            top: 2px
             left: 0
         &::after 
             content: ''
@@ -31,7 +32,7 @@
             border-left: 2px solid #000
             transform: rotate(-45deg)
             position: absolute
-            top: 8px
+            top: 7px
             left: 3px
 
 
@@ -44,7 +45,7 @@
             font-weight: 700
             text-decoration: none
         &:hover 
-            text-decoration: uderline
+            text-decoration: none
 
 @media (max-width: 768px)
     .sort 

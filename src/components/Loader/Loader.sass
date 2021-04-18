@@ -1,0 +1,43 @@
+
+    
+.loader-wrap 
+    display: flex 
+    align-items: center 
+    justify-content: center 
+    height: 100%    
+.loader 
+    position: relative
+    width: 80px
+    height: 80px
+    margin: 20px auto 
+    &::before, &::after 
+        content: ''
+        position: absolute 
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        border-radius: 50%
+    &::before 
+        width: 70px 
+        height: 70px
+        border: 4px solid red
+        border-color: #186DD6 transparent #186DD6 transparent
+        animation: rotateRing 1.2s linear infinite
+    &::after 
+        width: 40px 
+        height: 40px
+        border: 4px solid red
+        border-color: transparent lighten(#186DD6, 10%)  transparent lighten(#186DD6, 10%) 
+        animation: rotateRingReverse 1s linear infinite
+
+@keyframes rotateRing
+    0% 
+        transform: translate(-50%, -50%) rotate(0deg)
+    100% 
+        transform: translate(-50%, -50%) rotate(360deg)
+
+@keyframes rotateRingReverse
+    0% 
+        transform: translate(-50%, -50%) rotate(0deg)
+    100% 
+        transform: translate(-50%, -50%) rotate(-360deg)

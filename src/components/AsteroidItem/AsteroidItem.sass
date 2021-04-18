@@ -1,0 +1,114 @@
+.asteroid-item 
+    position: relative
+    display: flex 
+    justify-content: space-between
+    margin-bottom: 16px
+    padding: 24px 30px 40px 337px
+    border: 1px solid #000000
+    border-radius: 10px
+    overflow: hidden
+    &--good 
+        background: linear-gradient(90deg, #CFF37D 0%, #7DE88C 100%)
+    &--bad 
+        background: linear-gradient(90deg, #FFB199 0%, #FF0844 100%)
+
+    &__left 
+        width: 310px
+        padding: 0 10px
+        position: relative
+        z-index: 10
+
+    &__right 
+        width: 178px
+        padding: 0 10px
+
+    &__title 
+        display: inline-block
+        margin-bottom: 16px
+        font-size: 24px
+        line-height: 32px
+        font-weight: 700
+        color: #000
+        &:hover 
+            text-decoration: none
+    
+
+    &__dino
+        position: absolute
+        left: 18px
+        bottom: 0
+        z-index: 1
+    &__img
+        position: absolute
+        left: 122px
+        top: 28px
+        transform-origin: 30% 100% 
+        z-index: 1
+
+.list 
+    &__item 
+        // display: flex 
+        // justify-content: space-between
+        margin-bottom: 8px
+        font-size: 16px
+        line-height: 24px
+        &:after 
+            content: ' '
+            display: table 
+            clear: both
+        &:last-child 
+            margin-bottom: 0
+        &-title 
+            position: relative
+            display: block
+            overflow: hidden
+            &:after
+                content: ''
+                position: absolute
+                bottom: 3px
+                width: 100%
+                border-bottom: .1em dotted
+        &-value 
+            float: right
+
+.asteroid-mark 
+    margin-top: 16px
+    text-align: center
+    line-height: 24px
+    &__title 
+        margin-bottom: 8px
+        font-weight: 700
+
+@media (max-width: 900px)
+    .asteroid-item
+        padding-left: 300px
+
+@media (max-width: 768px)
+    .asteroid-item
+        padding: 105px 0 0 
+        flex-direction: column
+        &__left, &__right 
+            width: 100%
+            padding: 0
+        &__right 
+            padding-bottom: 22px
+            background-color: #fff
+        &__title 
+            margin-bottom: 8px 
+            padding: 0 16px
+        &__dino 
+            top: 115px
+            left: auto
+            right: 8px
+            height: 30px
+            transform: scale(-1, 1)
+        &__img 
+            top: 22px
+            left: 27px
+
+        
+    .list 
+        padding: 16px 
+        background-color: #fff
+    
+

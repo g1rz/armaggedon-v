@@ -13,7 +13,7 @@ const Sort = () => {
             </div>
 
             <p className="switch-d">
-                Расстояние <span className="switch-d__link active">в километрах</span>,
+                Расстояние <span className="switch-d__link active">в километрах</span>,{' '}
                 <span className="switch-d__link">в дистанциях до луны</span>
             </p>
         </div>

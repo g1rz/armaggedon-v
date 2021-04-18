@@ -1,13 +1,17 @@
+import React from 'react';
+import { Route } from 'react-router-dom';
 import './App.sass';
+
 import Header from './components/Header/Header';
-import Sort from './components/Sort/Sort';
+
+import Home from './pages/Home';
 
 function App() {
     return (
         <div className="App">
             <Header />
             <div className="container">
-                <Sort />
+                <Route exact path="/" component={Home} />
             </div>
         </div>
     );
