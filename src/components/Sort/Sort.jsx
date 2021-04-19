@@ -1,20 +1,23 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import './Sort.sass';
 
-const Sort = () => {
+const Sort = ({displayDistance, isShowDanger, handlerSortDanger, handlerDisplayDistance}) => {
+    
+
     return (
         <div className="sort">
             <div className="check">
-                <input type="checkbox" className="check__input" id="dangerous" />
-                <label htmlFor="dangerous" className="check__label">
+                <input type="checkbox" className="check__input" id="dangerous" checked={isShowDanger} onChange={() => handlerSortDanger()}/>
+                <label htmlFor="dangerous" className="check__label" >
                     Показать только опасные
                 </label>
             </div>
 
             <p className="switch-d">
-                Расстояние <span className="switch-d__link active">в километрах</span>,{' '}
-                <span className="switch-d__link">в дистанциях до луны</span>
+                Расстояние <span className={classNames('switch-d__link', {active: displayDistance === 'km'})} onClick={() => handlerDisplayDistance()}>в километрах</span>,{' '}
+                <span className={classNames('switch-d__link', {active: displayDistance === 'lunar'})} onClick={() => handlerDisplayDistance()}>в дистанциях до луны</span>
             </p>
         </div>
     );

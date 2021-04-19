@@ -1,7 +1,7 @@
 export default class NasaLinks {
     constructor() {
         this._apiBase = 'https://api.nasa.gov/neo/rest/v1/feed';
-        this._apikey = 'UdMlApTLhUthkdPgEV5QLXJ5mOsH2ctu7Ysrq9F7'; //'3tMdYN1GtEAqRCfP8yIUP6yCg4gQgw8FtE8iFb01';
+        this._apikey = '3tMdYN1GtEAqRCfP8yIUP6yCg4gQgw8FtE8iFb01';
 
         this.getAteroidsLink = this.getAteroidsLink.bind(this);
     }

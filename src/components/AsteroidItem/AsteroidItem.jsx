@@ -14,14 +14,14 @@ const AsteroidItem = ({
     close_approach_date_full,
     miss_distance,
     isDanger,
-    dispDistance,
+    displayDistance,
 }) => {
     const prettierNum = (num) => {
         return num.toString().replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1' + ' ');
     };
 
     const distance =
-        dispDistance === 'km'
+    displayDistance === 'km'
             ? prettierNum(Math.round(miss_distance.kilometers)) + ' км'
             : prettierNum(Math.round(miss_distance.lunar));
 
