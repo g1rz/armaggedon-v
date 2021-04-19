@@ -11,30 +11,26 @@ const Home = () => {
     const nasaService = new NasaLinks();
 
     const [isLoading, setIsLoading] = React.useState(true);
-    const [curDate, setCurDate] = React.useState(new Date(Date.now() - 86400000));
+    const [curDate, setCurDate] = React.useState(new Date());
     const [asteroids, setAsteroids] = React.useState([]);
-    const [visibleAsteroids, setVisibleAsteroids] = React.useState([]);
 
     const [isShowDanger, setIsShowDanger] = React.useState(false);
     const [displayDistance, setDisplayDistance] = React.useState('km');
 
     React.useEffect(() => {
+        console.log('start');
         loadAsteroids();
-        //     if (asteroids.length < 10) {
-        //         let dateDayAgo = new Date();
-        //         dateDayAgo.setDate(curDate.getDate() - 1);
-        //         setCurDate(dateDayAgo);
-        //         loadAsteroids();
-        //     } 
+
         window.addEventListener('scroll', handlerScroll);
 
         return () => {
             window.removeEventListener('scroll', handlerScroll);
         };
-    }, [isLoading]);
+    }, [isLoading, curDate]);
 
     const loadAsteroids = () => {
         if (isLoading) {
+            console.log(nasaService.getAteroidsLink(curDate));
             axios
                 .get(nasaService.getAteroidsLink(curDate))
                 .then(({ data }) => {
@@ -50,9 +46,18 @@ const Home = () => {
                     });
 
                     const newAsteroidList = [...asteroids, ...asteroidsList].filter((item) => {
-                        return item.isDanger || !isShowDanger ;
+                        return item.isDanger || !isShowDanger;
                     });
+
                     setAsteroids(newAsteroidList);
+
+                    if (newAsteroidList.length < 5) {
+                        console.log('malo');
+                        changeDayBefore();
+                        setIsLoading(true);
+                    } else {
+                        console.log('ok');
+                    }
 
                     console.log(newAsteroidList);
                 })
@@ -62,14 +67,18 @@ const Home = () => {
         }
     };
 
+    const changeDayBefore = () => {
+        let dateDayAgo = new Date();
+        dateDayAgo.setDate(curDate.getDate() - 1);
+        setCurDate(dateDayAgo);
+    };
+
     const handlerScroll = () => {
         let windowBottom = document.documentElement.getBoundingClientRect().bottom;
         let windowBottomStop = document.documentElement.clientHeight + 200;
 
         if (windowBottom < windowBottomStop && !isLoading) {
-            let dateDayAgo = new Date();
-            dateDayAgo.setDate(curDate.getDate() - 1);
-            setCurDate(dateDayAgo);
+            changeDayBefore();
             setIsLoading(true);
             console.log(windowBottom + ' - ' + windowBottomStop);
         }
@@ -77,10 +86,11 @@ const Home = () => {
 
     const handlerSortDanger = () => {
         setIsShowDanger(!isShowDanger);
+        setCurDate(new Date());
+        setAsteroids([]);
         setIsLoading(true);
-        loadAsteroids();
         console.log('click');
-    }
+    };
 
     const handlerDisplayDistance = () => {
         if (displayDistance === 'km') {
@@ -88,11 +98,16 @@ const Home = () => {
         } else {
             setDisplayDistance('km');
         }
-    }
+    };
 
     return (
         <React.Fragment>
-            <Sort isShowDanger={isShowDanger} displayDistance={displayDistance} handlerSortDanger={handlerSortDanger} handlerDisplayDistance={handlerDisplayDistance} />
+            <Sort
+                isShowDanger={isShowDanger}
+                displayDistance={displayDistance}
+                handlerSortDanger={handlerSortDanger}
+                handlerDisplayDistance={handlerDisplayDistance}
+            />
             <div className="asteroid-list">
                 {asteroids !== []
                     ? asteroids.map((item) => (
