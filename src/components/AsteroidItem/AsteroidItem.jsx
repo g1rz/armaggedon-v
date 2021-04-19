@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import './AsteroidItem.sass';
 
@@ -21,7 +22,7 @@ const AsteroidItem = ({
     };
 
     const distance =
-    displayDistance === 'km'
+        displayDistance === 'km'
             ? prettierNum(Math.round(miss_distance.kilometers)) + ' км'
             : prettierNum(Math.round(miss_distance.lunar));
 
@@ -55,9 +56,9 @@ const AsteroidItem = ({
                 { 'asteroid-item--bad': isDanger },
             )}>
             <div className="asteroid-item__left">
-                <a href="#" className="asteroid-item__title">
+                <Link to={`/asteroid/${id}`} className="asteroid-item__title">
                     {name}
-                </a>
+                </Link>
                 <div className="list">
                     <p className="list__item">
                         <span className="list__item-value">{localeDate}</span>

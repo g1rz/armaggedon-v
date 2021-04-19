@@ -1,6 +1,6 @@
 export default class NasaLinks {
     constructor() {
-        this._apiBase = 'https://api.nasa.gov/neo/rest/v1/feed';
+        this._apiBase = 'https://api.nasa.gov/neo/rest/v1/';
         this._apikey = '3tMdYN1GtEAqRCfP8yIUP6yCg4gQgw8FtE8iFb01';
 
         this.getAteroidsLink = this.getAteroidsLink.bind(this);
@@ -15,6 +15,10 @@ export default class NasaLinks {
 
         const dateStr = year + '-' + month + '-' + day;
 
-        return `${this._apiBase}?start_date=${dateStr}&end_date=${dateStr}&api_key=${this._apikey}`;
+        return `${this._apiBase}feed?start_date=${dateStr}&end_date=${dateStr}&api_key=${this._apikey}`;
+    }
+
+    getAteroidItemLink(id) {
+        return `${this._apiBase}neo/${id}?api_key=${this._apikey}`;
     }
 }
